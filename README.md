@@ -4,6 +4,18 @@ Uma API para gerenciamento de corridas, pessoas motoristas e passageiras.
 
 Essa API é usada como exemplo didático para o bloco de Arquitetura de Software do Curso de Desenvolvimento Web da Trybe.
 
+<details>
+  <summary>Branchs no repositório</summary>
+
+  -  `complex-application` - ínicio do bloco
+  - `simple-application-model-course` - conteúdo do dia de model completo
+  - `simple-application-model-live-lectures` - aula ao vivo do dia de model completo
+  - `simple-application-service-course` - conteúdo do dia de service completo
+  - `simple-application-service-live-lectures` - aula ao vivo do dia de service completo
+  - `simple-application-controller-course` - conteúdo do dia de controller completo
+  - `simple-application-controller-live-lectures` - aula ao vivo do dia de controller completo
+</details>
+
 ## Rodando a aplicação inicial via Docker
 
 - Clone o repositório e acesse a branch `complex-application` do projeto
@@ -20,7 +32,7 @@ git checkout complex-application
 docker-compose up -d
 ```
 
-- Conecte no banco de dados MySQL do contêiner `trybecar_db` exposto na porta `33061` usando algum cliente SQL (como o [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) ou a extensão [MySQL](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2) para o VSCode)
+- Conecte no banco de dados MySQL do contêiner `trybecar_db` exposto na porta `33060` usando algum cliente SQL (como o [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) ou a extensão [MySQL](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-mysql-client2) para o VSCode)
   - Utilize o usuário `root` e a senha `root`
   - Execute o script `script.sql` para criar as tabelas e alguns dados iniciais.
   - Você pode usar esse script a qualquer momento para recriar as tabelas se necessário.
@@ -62,4 +74,3 @@ npm run debug
   - POST `/cars`
 
 Os endpoints são apresentados com mais detalhes no conteúdo e exercícios.
-
