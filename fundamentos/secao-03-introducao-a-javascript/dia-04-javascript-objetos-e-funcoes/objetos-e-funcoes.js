@@ -1,6 +1,7 @@
-let player = {
-name = 'Marta';
-lastName = 'Silva';
-age = 34;
-medals = { golden: 2, silver: 3 };
-}
+let info = {
+    personagem: 'Margarida',
+    origem: 'Pato Donald',
+    nota: 'Namorada do personagem principal nos quadrinhos do Pato Donald',
+  };
+
+console.log("Bem vinda, " + ["Margarida"])
