@@ -13,18 +13,18 @@ let numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27];
 //console.log(result);
 
 
-let sum = 0;
+//let sum = 0;
 
-for (let index = 0; index < numbers.length; index += 1) {
-    sum += numbers[index];
-}
+//for (let index = 0; index < numbers.length; index += 1) {
+//    sum += numbers[index];
+//}
 
-let average = sum / numbers.length; 
+//let average = sum / numbers.length; 
 
-console.log(average);
+//console.log(average);
 
-if (average > 20) {
-    console.log("Valor maior que 20");  
-} else {
-    console.log("valor menor ou igual a 20");
-}
+//if (average > 20) {
+//    console.log("Valor maior que 20");  
+//} else {
+//    console.log("valor menor ou igual a 20");
+//}
