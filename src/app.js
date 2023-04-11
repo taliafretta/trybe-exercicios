@@ -33,6 +33,7 @@ const saveWaypoints = (waypoints, travelId) => {
 app.post('/passengers/:passengerId/request/travel', async (req, res) => {
   const { passengerId } = req.params;
   const { startingAddress, endingAddress, waypoints } = req.body;
+
   if (await passengerExists(passengerId)) {
     const [resultTravel] = await connection.execute(
       `INSERT INTO travels 
