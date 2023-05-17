@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS cars;
 -- Criando a tabela travel_status
 CREATE TABLE IF NOT EXISTS travel_status (
 	id INTEGER NOT NULL AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
+    status VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -37,7 +37,12 @@ CREATE TABLE IF NOT EXISTS cars (
     model VARCHAR(100),
     color VARCHAR(20),
     license_plate VARCHAR(20),
-    PRIMARY KEY (id)
+    driver_car INTEGER NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (driver_car)
+    REFERENCES drivers_cars(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
 );
 
 -- Criando a tabela drivers
@@ -45,19 +50,6 @@ CREATE TABLE IF NOT EXISTS drivers (
 	id INTEGER AUTO_INCREMENT,
     name VARCHAR(100),
     PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS drivers_cars ( 
-  driver_id INTEGER NOT NULL,
-  car_id INTEGER NOT NULL,
-    FOREIGN KEY (driver_id)
-      REFERENCES drivers(id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE, 
-    FOREIGN KEY (car_id) 
-    REFERENCES cars(id)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
 );
 
 -- Criando a tabela travels
@@ -98,9 +90,8 @@ CREATE TABLE IF NOT EXISTS waypoints (
 );
 
 -- Pré populando a tabela travel_status
-INSERT INTO travel_status (name) VALUES 
-	('Aguardando Motorista'), 
-    ('Motorista a Caminho'), 
+INSERT INTO travel_status (status) VALUES 
+	('Aguardando Motorista'),  
     ('Viagem em Andamento'), 
     ('Viagem Finalizada');
 
@@ -112,15 +103,6 @@ INSERT INTO passengers (name, email, phone) VALUES
     ('Estêvão Paranhos', 'estevao.paranhos@acme.com', '(82) 2166-2413'),
     ('Mateo Vidigal', 'mateo.vidigal@acme.com', '(51) 2303-7355');
 
--- Pré populando a cars
-INSERT INTO cars (model, color, license_plate) VALUES 
-	('Renault Sandero', 'Branco', 'NCA-0956'),
-    ('Volkswagen Gol', 'Vermelho', 'DZG-4376'),
-    ('Chevrolet Onix', 'Prata', 'KBJ-2899'),
-    ('Renault Logan', 'Azul', 'NFA-9035'),
-    ('Fiat Siena', 'Cinza', 'HTH-9177'),
-    ('Nissan Versa', 'Preto', 'BGY-6802');
-
 -- Pré populando a tabela drivers
 INSERT INTO drivers (name) VALUES 
 	('Liana Cisneiros'),
@@ -129,10 +111,10 @@ INSERT INTO drivers (name) VALUES
     ('Samara Granjeiro'),
     ('Levi Teixeira');
 
-INSERT INTO drivers_cars (driver_id, car_id) VALUES 
-	(1, 1),
-    (2, 2),
-    (3, 3),
-    (4, 4), 
-    (5, 5),
-    (5, 6);
+-- Pré populando a cars
+INSERT INTO cars (model, color, license_plate, driver_id) VALUES 
+	('Renault Sandero', 'Branco', 'NCA-0956', 1),
+    ('Volkswagen Gol', 'Vermelho', 'DZG-4376', 2),
+    ('Chevrolet Onix', 'Prata', 'KBJ-2899', 3),
+    ('Renault Logan', 'Azul', 'NFA-9035', 4),
+    ('Fiat Siena', 'Cinza', 'HTH-9177', 5);
