@@ -30,6 +30,12 @@ CREATE TABLE IF NOT EXISTS passengers (
     phone VARCHAR(20) NOT NULL,
     PRIMARY KEY (id)
 );
+-- Criando a tabela drivers
+CREATE TABLE IF NOT EXISTS drivers (
+	id INTEGER AUTO_INCREMENT,
+    name VARCHAR(100),
+    PRIMARY KEY (id)
+);
 
 -- Criando a tabela cars
 CREATE TABLE IF NOT EXISTS cars (
@@ -37,19 +43,12 @@ CREATE TABLE IF NOT EXISTS cars (
     model VARCHAR(100),
     color VARCHAR(20),
     license_plate VARCHAR(20),
-    driver_car INTEGER NOT NULL,
+    driver_id INTEGER NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (driver_car)
-    REFERENCES drivers_cars(id)
+    FOREIGN KEY (driver_id)
+    REFERENCES drivers (id)
       ON DELETE CASCADE
       ON UPDATE CASCADE
-);
-
--- Criando a tabela drivers
-CREATE TABLE IF NOT EXISTS drivers (
-	id INTEGER AUTO_INCREMENT,
-    name VARCHAR(100),
-    PRIMARY KEY (id)
 );
 
 -- Criando a tabela travels
