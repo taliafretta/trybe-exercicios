@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   # Serviço que irá rodar o node
@@ -23,9 +23,10 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_PORT: 3306
-      MYSQL_HOST: database # Nome do service que será utilizado para o banco de dados
+      MYSQL_HOST: database # Nome do service logo abaixo
       PORT: 3001
-  
+
+  # Serviço que irá rodar o banco de dados
   database:
     image: mysql:8.0.29
     container_name: trybecar_db
