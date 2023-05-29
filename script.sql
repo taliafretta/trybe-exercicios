@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS cars (
     model VARCHAR(100),
     color VARCHAR(20),
     license_plate VARCHAR(20),
+    year INTEGER NOT NULL,
     driver_id INTEGER NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (driver_id)
@@ -112,9 +113,9 @@ INSERT INTO drivers (name) VALUES
     ('Levi Teixeira');
 
 -- Pré populando a cars
-INSERT INTO cars (model, color, license_plate, driver_id) VALUES 
-	('Renault Sandero', 'Branco', 'NCA-0956', 1),
-    ('Volkswagen Gol', 'Vermelho', 'DZG-4376', 2),
-    ('Chevrolet Onix', 'Prata', 'KBJ-2899', 3),
-    ('Renault Logan', 'Azul', 'NFA-9035', 4),
-    ('Fiat Siena', 'Cinza', 'HTH-9177', 5);
+INSERT INTO cars (model, color, license_plate, year, driver_id) VALUES 
+	('Renault Sandero', 'Branco', 'NCA-0956', 2019, 1),
+    ('Volkswagen Gol', 'Vermelho', 'DZG-4376', 2015, 2),
+    ('Chevrolet Onix', 'Prata', 'KBJ-2899', 2020, 3),
+    ('Renault Logan', 'Azul', 'NFA-9035', 2019, 4),
+    ('Fiat Siena', 'Cinza', 'HTH-9177', 2017, 5);
