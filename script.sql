@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS waypoints (
 -- Pré populando a tabela travel_status
 INSERT INTO travel_status (id, status) VALUES 
 	(1, 'Aguardando Motorista'),
-  (2, 'Motorista a caminho'),
+    (2, 'Motorista a caminho'),
     (3, 'Viagem em Andamento'), 
     (4, 'Viagem Finalizada');
 
@@ -108,7 +108,7 @@ INSERT INTO passengers (name, email, phone) VALUES
 INSERT INTO drivers (name) VALUES 
 	('Liana Cisneiros'),
     ('Fábio Frazão'),
-    ('Anastacia Bicalho'),
+    ('Anastácia Bicalho'),
     ('Samara Granjeiro'),
     ('Levi Teixeira');
 
