@@ -7,6 +7,21 @@ app.use(express.json());
 
 const moviesPath = path.resolve(__dirname, './movies.json');
 
+app.get('/movies/:id', async (req, res) => {
+  try {
+    const { q } = req.query;
+    const movies = await readFile();
+
+    if (q) {
+      const filteredMovies = movies.filter((element) => element.movie.includes(q));
+      return res.status(200).json(filteredMovies);
+    }
+
+    res.status(200).end();
+  } catch (err) {
+    res.status(500).send({ message: err.message })
+  }
+})
 const readFile = async () => {
   try {
     const data = await fs.readFile(moviesPath);
@@ -15,6 +30,7 @@ const readFile = async () => {
     console.error(`Arquivo não pôde ser lido: ${error}`);
   }
 };
+
 
 app.get('/movies/:id', async (req, res) => {
   try {
