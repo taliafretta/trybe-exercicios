@@ -5,15 +5,19 @@ export class form extends Component {
     super();
 
     this.state = {
+      name: '',
       email: '',
+      age: '',
+      anecdote: '',
     };
     this.hadleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange({ target }) {
+    const { name, value } = target;
     this.setState({
-      email: event.target.value,
-    })
+      [name]: value,
+    });
   }
 
   render() {
@@ -29,6 +33,8 @@ export class form extends Component {
               id="name"
               name="name"
               type="text"
+              onChange={ this.handleChange }
+              value={ name }
             />
           </label>
 
@@ -49,6 +55,8 @@ export class form extends Component {
               id="age"
               name="age"
               defaultValue=""
+              onChange={ this.hadleChange}
+              value={ age }
             >
               <option value="">Selecione</option>
               <option value="adult">Maior que 18</option>
@@ -58,7 +66,12 @@ export class form extends Component {
 
           <label htmlFor="anecdote">
             Anedota:
-            <textarea id="anecdote" name="anecdote" />
+            <textarea 
+            id="anecdote" 
+            name="anecdote" 
+            onChange={ this.handleChange }
+            value={ anecdote }s
+            />
           </label>
 
         </form>

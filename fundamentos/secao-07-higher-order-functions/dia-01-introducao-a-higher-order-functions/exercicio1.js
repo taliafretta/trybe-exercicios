@@ -61,10 +61,22 @@ const books = [
     },
   ];
   
-  // Adicione o código do exercício aqui:
 //   Encontre o nome da primeira pessoa autora do livro nascida no ano de 1947.
- const expectedResult = 'Stephen King';
+const expectedResult = 'Stephen King';
 const authorBornIn1947 = (birthYear) => {
    return books.find((author) => author.birthYear === birthYear);
  };
- console.log(authorBornIn1947(1947));
+console.log(authorBornIn1947(1947));
+
+//  Retorne o nome do livro com menor número de caracteres (menor nome).
+ //const expectedResult = 'Duna';
+// const smallerName = (small) => { 
+//     books.forEach(name) => {
+        
+//     }
+//   let nameBook;
+//   // escreva aqui o seu código
+
+//   // Variável nameBook que receberá o valor do menor nome;
+//   return nameBook;
+// }
