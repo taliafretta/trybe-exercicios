@@ -1,35 +1,27 @@
+// ./Student.ts
 
-class Student {
-  private _enrollment: string;
-  private _name: string;
-  private _examsGrades: number[];
-  private _assignmentsGrades: number[];
+import Person from "./Person";
 
-  constructor(enrollment: string, name: string) {
-    this._enrollment = enrollment;
-    this._name = name;
-    this._examsGrades = [];
-    this._assignmentsGrades = [];
+export default class Student extends Person {
+  private _enrollment = String();
+  private _examsGrades: number[] = [];
+  private _assignmentsGrades: number[] = [];
+
+  constructor(name: string, birthDate: Date) {
+    super(name, birthDate);
+    this.enrollment = this.generateEnrollment();
   }
 
   get enrollment(): string {
     return this._enrollment;
   }
 
+
+  //esse método checa se a inscrição da pessoa estudante possui no mínimo 16 caracteres
   set enrollment(value: string) {
+    if (value.length < 16) throw new Error('A matrícula deve possuir no mínimo 16 caracteres.');
+
     this._enrollment = value;
-  }
-
-  get name(): string {
-    return this._name;
-  }
-
-  set name(value: string) {
-    if (value.length < 3) {
-      throw new Error('O nome deve conter no mínimo 3 caracteres.');
-    }
-
-    this._name = value;
   }
 
   get examsGrades(): number[] {
@@ -37,9 +29,7 @@ class Student {
   }
 
   set examsGrades(value: number[]) {
-    if (value.length > 4) {
-      throw new Error('A pessoa estudante só pode possuir 4 notas de provas.');
-    }
+    if (value.length > 4) throw new Error('A pessoa estudante só pode possuir 4 notas de provas.');
 
     this._examsGrades = value;
   }
@@ -49,39 +39,15 @@ class Student {
   }
 
   set assignmentsGrades(value: number[]) {
-    if (value.length > 2) {
-      throw new Error(
-        'A pessoa estudante só pode possuir 2 notas de trabalhos.',
-      );
-    }
+    if (value.length > 2) throw new Error('A pessoa estudante só pode possuir 2 notas de trabalhos.');
 
     this._assignmentsGrades = value;
   }
+
+  //esse método gera um id de inscrição aleatório baseado na data de cadastro da pessoa estudante
+  generateEnrollment(): string {
+    const randomStr = String(Date.now() * (Math.random() + 1)).replace(/\W/g, '');
+
+    return `STU${randomStr}`;
+  }
 }
-
-sumGrades(): number {
-  return [...this.examsGrades, ...this.assignmentsGrades]
-    .reduce((previousNote, note) => {
-      const nextNote = note + previousNote;
-
-      return nextNote;
-    }, 0);
-}
-
-sumAverageGrade(): number {
-  const sumGrades = this.sumGrades();
-  const divider = this.examsGrades.length + this.assignmentsGrades.length;
-
-  return Math.round(sumGrades / divider);
-}
-
-// Para testar!
-
-const personOne = new Student('202001011', 'Maria da Silva');
-
-personOne.examsGrades = [25, 20, 23, 23];
-personOne.assignmentsGrades = [45, 45];
-
-console.log(personOne);
-console.log('Soma de todas as notas: ', personOne.sumGrades());
-console.log('Média de todas as notas: ', personOne.sumAverageGrade());
