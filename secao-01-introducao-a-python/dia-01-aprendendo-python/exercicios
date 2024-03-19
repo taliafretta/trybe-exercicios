@@ -1,0 +1,10 @@
+def bigger(number, other):
+  if other > number:
+    return other
+  return number
+
+def mean(numbers):
+  sum = 0
+  for number in numbers:
+    sum += number
+  return sum / len(numbers)
